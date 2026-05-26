@@ -102,16 +102,6 @@ jobs:
           For more help: https://github.com/gass88wei/story-fab/releases
           RUNEOF
 
-      - name: Setup code signing certificate (optional)
-        if: ${{ matrix.platform.label == 'Windows x64' && secrets.WINDOWS_CERTIFICATE != '' }}
-        shell: pwsh
-        env:
-          CERTIFICATE_BASE64: ${{ secrets.WINDOWS_CERTIFICATE }}
-        run: |
-          $certBytes = [Convert]::FromBase64String($env:CERTIFICATE_BASE64)
-          [System.IO.File]::WriteAllBytes("certificate.pfx", $certBytes)
-          Write-Output "Certificate decoded and ready for code signing"
-
       - name: Build Tauri app
         uses: tauri-apps/tauri-action@v0
         env:
@@ -120,8 +110,6 @@ jobs:
           tagName: ${{ github.ref_name }}
           releaseName: "StoryFab v${{ github.ref_name }}"
           args: --target ${{ matrix.platform.target }}
-          certificatePath: ${{ matrix.platform.label == 'Windows x64' && secrets.WINDOWS_CERTIFICATE && 'certificate.pfx' || '' }}
-          certificatePassword: ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
 
       - name: Copy run instructions to bundle
         if: matrix.platform.label == 'macOS ARM64' || matrix.platform.label == 'macOS x64'
