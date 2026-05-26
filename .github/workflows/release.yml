@@ -35,11 +35,6 @@ jobs:
           node-version: '22'
           cache: 'npm'
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: '9'
-
       - name: Install Linux dependencies
         if: contains(matrix.platform.runner, 'ubuntu')
         run: |
@@ -52,8 +47,7 @@ jobs:
           toolchain: 1.80.0
           target: ${{ matrix.platform.target }}
 
-      - name: Install dependencies
-        run: pnpm install
+      - name: Enable corepack and install deps`n        run: corepack enable && corepack prepare pnpm@9 --activate && pnpm install
 
       # Only one job creates the GitHub Release (macOS ARM64 runs first by alphabet)
       - name: Create GitHub Release
@@ -78,23 +72,23 @@ jobs:
           Because StoryFab is not signed with an Apple Developer certificate,
           you must explicitly allow it to run on your Mac:
 
-          METHOD 1 â€” Easiest (Recommended):
+          METHOD 1 â€?Easiest (Recommended):
           1. Right-click on StoryFab.app
           2. Select "Open" from the context menu
           3. macOS will show a warning popup
           4. Click "Open Anyway"
-          5. StoryFab will launch âœ…
+          5. StoryFab will launch âœ?
 
-          METHOD 2 â€” Terminal:
-          1. Open Terminal (Applications â†’ Utilities â†’ Terminal)
+          METHOD 2 â€?Terminal:
+          1. Open Terminal (Applications â†?Utilities â†?Terminal)
           2. Copy and paste this command:
              sudo xattr -rd com.apple.quarantine "/Applications/StoryFab.app"
           3. Press Enter, enter your password when prompted
           4. Launch StoryFab from Applications normally
 
-          METHOD 3 â€” System Settings:
+          METHOD 3 â€?System Settings:
           1. Try to open StoryFab (double-click)
-          2. Go to System Settings â†’ Privacy & Security
+          2. Go to System Settings â†?Privacy & Security
           3. Scroll down to "Security policy" section
           4. Click "Open Anyway" next to StoryFab
           5. Launch StoryFab again
@@ -138,7 +132,7 @@ jobs:
           echo "Original size: $(echo "scale=1; $SIZE/1024/1024/1024" | bc) GB"
           # Compress if larger than 1.5 GB (stay safely under 2 GB GitHub limit)
           if [ "$SIZE" -gt 1610612736 ]; then
-            echo "Large AppImage â€” compressing with 7z..."
+            echo "Large AppImage â€?compressing with 7z..."
             7z a -t7z "StoryFab-${{ matrix.platform.label }}.7z" "$APPIMAGE" -mx9
             ls -lh "StoryFab-${{ matrix.platform.label }}.7z"
           else
