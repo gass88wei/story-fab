@@ -103,7 +103,7 @@ jobs:
           RUNEOF
 
       - name: Setup code signing certificate (optional)
-        if: matrix.platform.label == 'Windows x64' && env.WINDOWS_CERTIFICATE != ''
+        if: ${{ matrix.platform.label == 'Windows x64' && secrets.WINDOWS_CERTIFICATE != '' }}
         shell: pwsh
         env:
           CERTIFICATE_BASE64: ${{ secrets.WINDOWS_CERTIFICATE }}

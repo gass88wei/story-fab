@@ -89,7 +89,7 @@ jobs:
           Write-Output "StoryFab version: $version"
 
       - name: Setup code signing certificate (optional)
-        if: secrets.WINDOWS_CERTIFICATE != ''
+        if: ${{ secrets.WINDOWS_CERTIFICATE != '' }}
         shell: pwsh
         env:
           CERTIFICATE_BASE64: ${{ secrets.WINDOWS_CERTIFICATE }}
