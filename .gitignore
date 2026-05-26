@@ -1,0 +1,99 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Tauri
+src-tauri/target/
+src-tauri/dist/
+src-tauri/release/
+src-tauri/bundle/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Misc
+*.tgz
+.cache
+.parcel-cache/
+
+# Editor directories and files
+.DS_Store
+*.sublime-*
+
+# Temporary files
+*.temp
+*.tmp
+tmp/
+temp/
+
+# Video/Audio cache
+*.mp4.part
+*.avi.part
+*.mov.part
+audio_cache/
+video_cache/
+
+# AI Model cache
+models/
+model_cache/
+*.gguf
+*.safetensors
+
+# Debug
+*.map
+*.stack
+
+DEVELOPMENT_PLAN.md
+UI_OPTIMIZE_GUIDE.md
+
+# Optimization documentation (local only, not for git)
+OPTIMIZATION_PLAN.md
+OPTIMIZATION_SUMMARY.md
+COMPLETION_REPORT.md
+UI_OPTIMIZATION.md
+WORKFLOW_OPTIMIZATION.md
+PERFORMANCE_OPTIMIZATION.md
+TEST_REPORT.md
+TYPES_MIGRATION.md
+TYPES_UNIFICATION.md
+TIMELINE_REFACTOR.md
+
+# VitePress
+.vitepress/cache/
+.vitepress/dist/
+
+
+# Internal planning docs
+# (placeholder — add docs as needed)
+pnpm-lock.yaml
+src-tauri/Cargo.lock

@@ -1,0 +1,83 @@
+/* KeyboardShortcutsHelp styles — dark theme */
+
+.content {
+  padding: 8px 4px;
+  max-height: 55vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section:last-of-type {
+  margin-bottom: 12px;
+}
+
+.sectionTitle {
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: var(--text-secondary, #71717a) !important;
+  margin-bottom: 8px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border), rgba(255,255,255,0.06);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.keys {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.plus {
+  color: var(--text-secondary, #71717a);
+  font-size: 11px;
+  line-height: 1;
+}
+
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 22px;
+  padding: 0 6px;
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--text, #f4f4f5);
+  background: var(--bg-tertiary, #27272a);
+  border: 1px solid var(--border, #3f3f46);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.desc {
+  font-size: 13px;
+  color: var(--text-secondary, #a1a1aa) !important;
+  margin-left: 12px;
+  text-align: right;
+  flex: 1;
+}

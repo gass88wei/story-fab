@@ -1,0 +1,344 @@
+// Home page styles — extracted from inline style objects
+// Purple (#667eea, #764ba2, #8B5CF6, #a855f7, #6366f1) → Amber (#d4a574)
+
+@import '../../styles/_mixins.less';
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+// Hero banner
+.heroBanner {
+  margin-bottom: 24px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.heroBannerDark {
+  background: linear-gradient(135deg, #d4a574 0%, #b8956a 50%, #c4996a 100%);
+}
+
+.heroBannerLight {
+  background: linear-gradient(135deg, #d4a574 0%, #b8956a 100%);
+}
+
+.heroGrid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+
+.heroGlow {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.heroTitle {
+  color: #fff;
+  margin: 0;
+  font-weight: 600;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.heroParagraph {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 16px;
+  margin: 8px 0 20px;
+}
+
+.heroPrimaryBtn {
+  background: #fff;
+  color: #d4a574;
+  border: none;
+  font-weight: 600;
+  height: 44px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.heroSecondaryBtn {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  height: 44px;
+  border-radius: 8px;
+}
+
+.heroIcon {
+  font-size: 80px;
+  color: rgba(255, 255, 255, 0.15);
+  line-height: 1;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
+}
+
+// Base card style (dark mode)
+.cardDark {
+  .glass-base();
+  border-radius: 12px;
+}
+
+// Base card style (light mode)
+.cardLight {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+}
+
+// Stats row
+.statsRow {
+  margin-bottom: 24px;
+}
+
+.statsCard {
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.statsCardBody {
+  padding: 20px 24px;
+}
+
+.statIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  border: 1px solid;
+}
+
+.statLabel {
+  font-size: 12px;
+}
+
+.statValue {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.statSuffix {
+  font-size: 13px;
+  font-weight: 400;
+  margin-left: 2px;
+}
+
+// Section card title
+.cardTitle {
+  font-weight: 600;
+}
+
+.cardTitleIcon {
+  color: #d4a574;
+}
+
+// Recent projects card
+.recentProjectsCard {
+  margin-bottom: 24px;
+  border-radius: 12px;
+}
+
+.projectList {
+  padding: 16px 0;
+  text-align: center;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 8px 0;
+}
+
+.loadingContainer {
+  padding: 16px 0;
+  text-align: center;
+}
+
+.projectCard {
+  border-radius: 10px;
+}
+
+.projectCardDark {
+  border: 1px solid #2a2a3a;
+}
+
+.projectCardLight {
+  border: 1px solid #f0f0f0;
+}
+
+.projectCardBody {
+  padding: 14px;
+}
+
+.projectCardTitle {
+  display: block;
+}
+
+.projectCardDesc {
+  display: block;
+  margin-top: 4px;
+}
+
+.projectCardFooter {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// Workflow card
+.workflowCard {
+  height: 100%;
+  border-radius: 12px;
+}
+
+.workflowCardBody {
+  padding: 20px;
+}
+
+.workflowItem {
+  padding: 16px 12px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.workflowStepBg {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.workflowIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.workflowStepTitle {
+  font-weight: 600;
+  font-size: 13px;
+  position: relative;
+  z-index: 1;
+}
+
+.workflowStepDesc {
+  font-size: 11px;
+  position: relative;
+  z-index: 1;
+}
+
+.workflowCtaBtn {
+  background: linear-gradient(135deg, #d4a574, #c4996a);
+  border: none;
+  border-radius: 8px;
+  height: 40px;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(212, 165, 116, 0.4);
+}
+
+.workflowCtaRow {
+  margin-top: 20px;
+  text-align: center;
+}
+
+// Activities card
+.activitiesCard {
+  height: 100%;
+  border-radius: 12px;
+}
+
+.activityItem {
+  padding-bottom: 8px;
+}
+
+.activityTitle {
+  color: inherit;
+}
+
+.activityDesc {
+  font-size: 12px;
+}
+
+.activityTime {
+  font-size: 11px;
+}
+
+.processingTag {
+  margin-left: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+// AI Models card
+.aiModelsCard {
+  margin-top: 16px;
+  border-radius: 12px;
+}
+
+.aiModelsCardBody {
+  padding: 16px 24px;
+}
+
+.aiModelsWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.aiModelsLabel {
+  display: flex;
+  align-items: center;
+}
+
+.aiModelsLabelIcon {
+  color: #f59e0b;
+  margin-right: 8px;
+}
+
+.aiModelTag {
+  margin: 0;
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.aiModelTagDark {
+  background: rgba(212, 165, 116, 0.15);
+  border: 1px solid rgba(212, 165, 116, 0.3);
+  color: #e2c49a;
+}
+
+.aiModelTagLight {
+  background: rgba(212, 165, 116, 0.1);
+  border: 1px solid rgba(212, 165, 116, 0.2);
+  color: #d4a574;
+}
