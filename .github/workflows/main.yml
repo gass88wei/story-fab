@@ -30,7 +30,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v3
         with:
           version: '9'
       - name: Install dependencies
@@ -66,7 +66,7 @@ jobs:
         with:
           node-version: '22'
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v3
         with:
           version: '9'
       - name: Install dependencies
@@ -108,7 +108,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v3
         with:
           version: '9'
       - name: Install dependencies
@@ -138,7 +138,7 @@ jobs:
         with:
           node-version: '22'
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v3
         with:
           version: '9'
       - name: Install dependencies
@@ -177,7 +177,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v3
         with:
           version: '9'
       - name: Install dependencies
@@ -204,7 +204,7 @@ jobs:
         with:
           node-version: '22'
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v3
         with:
           version: '9'
       - name: Install dependencies
@@ -296,7 +296,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v3
         with:
           version: '9'
       - name: Install dependencies
@@ -327,7 +327,7 @@ jobs:
         with:
           node-version: '22'
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v3
         with:
           version: '9'
       - name: Install frontend dependencies
@@ -376,7 +376,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v3
         with:
           version: '9'
       - name: Install dependencies
