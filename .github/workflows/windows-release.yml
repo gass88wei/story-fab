@@ -24,14 +24,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node.js + pnpm
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'pnpm'
+
+      - name: Install pnpm
+        run: npm install -g pnpm@9
 
       - name: Install dependencies
-        run: corepack enable && corepack prepare pnpm@9 --activate && pnpm install
+        run: pnpm install
 
       - name: TypeScript check
         run: pnpm run type-check
@@ -51,14 +53,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node.js + pnpm
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'pnpm'
+
+      - name: Install pnpm
+        run: npm install -g pnpm@9
 
       - name: Install dependencies
-        run: corepack enable && corepack prepare pnpm@9 --activate && pnpm install
+        run: pnpm install
 
       - name: Setup Rust toolchain
         uses: dtolnay/rust-toolchain@stable

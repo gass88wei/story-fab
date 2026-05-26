@@ -98,5 +98,6 @@
     "vite": "^6.2.1",
     "vitepress": "^1.6.4",
     "vitest": "^4.1.0"
-  }
+  },
+  "packageManager": "pnpm@9.15.9"
 }

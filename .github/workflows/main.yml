@@ -23,7 +23,9 @@ jobs:
         with:
           node-version: '22'
       - name: Enable corepack and install deps
-        run: corepack enable && corepack prepare pnpm@9 --activate && pnpm install
+        run: npm install -g pnpm@9
+      - name: Install dependencies
+        run: pnpm install
       - name: TypeScript check
         run: |
           mkdir -p reports
@@ -55,7 +57,9 @@ jobs:
         with:
           node-version: '22'
       - name: Enable corepack and install deps
-        run: corepack enable && corepack prepare pnpm@9 --activate && pnpm install
+        run: npm install -g pnpm@9
+      - name: Install dependencies
+        run: pnpm install
       - name: TypeScript check
         shell: pwsh
         run: |
@@ -86,7 +90,9 @@ jobs:
         with:
           node-version: '22'
       - name: Enable corepack and install deps
-        run: corepack enable && corepack prepare pnpm@9 --activate && pnpm install
+        run: npm install -g pnpm@9
+      - name: Install dependencies
+        run: pnpm install
       - name: Create reports directory
         run: mkdir -p reports
       - name: ESLint
@@ -112,7 +118,9 @@ jobs:
         with:
           node-version: '22'
       - name: Enable corepack and install deps
-        run: corepack enable && corepack prepare pnpm@9 --activate && pnpm install
+        run: npm install -g pnpm@9
+      - name: Install dependencies
+        run: pnpm install
       - name: ESLint
         shell: pwsh
         run: pnpm run lint
@@ -140,7 +148,9 @@ jobs:
         with:
           node-version: '22'
       - name: Enable corepack and install deps
-        run: corepack enable && corepack prepare pnpm@9 --activate && pnpm install
+        run: npm install -g pnpm@9
+      - name: Install dependencies
+        run: pnpm install
       - name: Create reports directory
         run: mkdir -p reports
       - name: Coverage with JSON reporter
@@ -163,7 +173,9 @@ jobs:
         with:
           node-version: '22'
       - name: Enable corepack and install deps
-        run: corepack enable && corepack prepare pnpm@9 --activate && pnpm install
+        run: npm install -g pnpm@9
+      - name: Install dependencies
+        run: pnpm install
       - name: Run tests
         shell: pwsh
         run: pnpm run test:run
@@ -206,7 +218,7 @@ jobs:
           fi
           COVERAGE=$(python3 scripts/compute-coverage.py)
           echo "Coverage: ${COVERAGE}%"
-          # Coverage of 0% means no coverage data â€?skip instead of failing
+          # Coverage of 0% means no coverage data ï¿½?skip instead of failing
           if [ "$COVERAGE" = "0" ] || [ -z "$COVERAGE" ]; then
             echo "No coverage data generated, skipping check"
             exit 0
@@ -219,7 +231,7 @@ jobs:
           echo "Coverage meets threshold"
       - name: TypeScript errors check
         run: |
-          # Only check src/ files â€?node_modules errors are expected and ignored
+          # Only check src/ files ï¿½?node_modules errors are expected and ignored
           if [ -f reports/tsc-report-src.txt ]; then
             SRC_ERRORS=$(grep -c "error TS" reports/tsc-report-src.txt || echo "0")
             echo "TypeScript errors in src/: $SRC_ERRORS"
@@ -244,7 +256,9 @@ jobs:
         with:
           node-version: '22'
       - name: Enable corepack and install deps
-        run: corepack enable && corepack prepare pnpm@9 --activate && pnpm install
+        run: npm install -g pnpm@9
+      - name: Install dependencies
+        run: pnpm install
       - name: Build
         run: pnpm run build
       - name: Bundle budget check
@@ -270,6 +284,8 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: '22'
+      - name: Install pnpm
+        run: npm install -g pnpm@9
       - name: Install frontend dependencies
         run: pnpm install
       - name: Build frontend
@@ -309,7 +325,9 @@ jobs:
         with:
           node-version: '22'
       - name: Enable corepack and install deps
-        run: corepack enable && corepack prepare pnpm@9 --activate && pnpm install
+        run: npm install -g pnpm@9
+      - name: Install dependencies
+        run: pnpm install
       - name: Download all reports
         uses: actions/download-artifact@v5
         with:
