@@ -56,6 +56,41 @@ jobs:
           path: reports/
           retention-days: 7
 
+  typecheck-windows:
+    name: TypeScript Check (Windows)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Install pnpm
+        uses: pnpm/action-setup@v5
+        with:
+          version: '9'
+      - name: Install dependencies
+        run: pnpm install
+      - name: TypeScript check
+        shell: pwsh
+        run: |
+          if (!(Test-Path reports)) { New-Item -ItemType Directory -Path reports }
+          tsc --noEmit --pretty false > reports/tsc-report.txt 2>&1
+          $srcErrors = Select-String -Path reports/tsc-report.txt -Pattern "^src/" -SimpleMatch
+          if ($srcErrors) {
+            Write-Host "TypeScript errors found in src/"
+            $srcErrors | ForEach-Object { Write-Host $_.Line }
+            exit 1
+          }
+          Write-Host "TypeScript check passed"
+      - name: Upload TypeScript report
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: tsc-report-windows
+          path: reports/
+          retention-days: 7
+
   lint:
     name: Lint
     runs-on: ubuntu-latest
@@ -93,6 +128,38 @@ jobs:
           path: reports/
           retention-days: 7
 
+  lint-windows:
+    name: Lint (Windows)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Install pnpm
+        uses: pnpm/action-setup@v5
+        with:
+          version: '9'
+      - name: Install dependencies
+        run: pnpm install
+      - name: ESLint
+        shell: pwsh
+        run: pnpm run lint
+      - name: ESLint JSON report
+        shell: pwsh
+        run: |
+          if (!(Test-Path reports)) { New-Item -ItemType Directory -Path reports }
+          pnpm exec eslint src --format json --output-file reports/eslint-report.json
+        continue-on-error: true
+      - name: Upload ESLint report
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: eslint-report-windows
+          path: reports/
+          retention-days: 7
+
   coverage:
     name: Coverage Check
     runs-on: ubuntu-latest
@@ -126,6 +193,25 @@ jobs:
           name: coverage-report
           path: coverage/
           retention-days: 7
+
+  test-windows:
+    name: Unit Tests (Windows)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Install pnpm
+        uses: pnpm/action-setup@v5
+        with:
+          version: '9'
+      - name: Install dependencies
+        run: pnpm install
+      - name: Run tests
+        shell: pwsh
+        run: pnpm run test:run
 
   quality-gate:
     name: PR Quality Gate

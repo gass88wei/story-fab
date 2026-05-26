@@ -88,12 +88,24 @@ jobs:
           Write-Output "version=$version" >> $env:GITHUB_OUTPUT
           Write-Output "StoryFab version: $version"
 
+      - name: Setup code signing certificate (optional)
+        if: secrets.WINDOWS_CERTIFICATE != ''
+        shell: pwsh
+        env:
+          CERTIFICATE_BASE64: ${{ secrets.WINDOWS_CERTIFICATE }}
+        run: |
+          $certBytes = [Convert]::FromBase64String($env:CERTIFICATE_BASE64)
+          [System.IO.File]::WriteAllBytes("certificate.pfx", $certBytes)
+          Write-Output "Certificate decoded and ready for code signing"
+
       - name: Build Tauri for Windows
         uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           args: --target x86_64-pc-windows-msvc
+          certificatePath: ${{ secrets.WINDOWS_CERTIFICATE && 'certificate.pfx' || '' }}
+          certificatePassword: ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
 
       - name: List built installers
         shell: pwsh
