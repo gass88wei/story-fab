@@ -169,10 +169,8 @@ jobs:
           $exists = "${{ steps.check-release.outputs.exists }}"
 
           if ($exists -eq "false") {
-            gh release create $tag `
-              --title "StoryFab $tag" `
-              --generate-notes `
-              --repo ${{ github.repository }}
+            Write-Output "Creating release $tag..."
+            gh release create $tag --title "StoryFab $tag" --notes "StoryFab Windows release v$tag" --repo ${{ github.repository }}
             Write-Output "Created release $tag"
           } else {
             Write-Output "Release $tag already exists, skipping creation"
