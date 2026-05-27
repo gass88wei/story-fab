@@ -94,12 +94,6 @@
     }
   },
   "plugins": {
-    "notification": {
-      "all": true
-    },
-    "clipboard-manager": {
-      "all": true
-    },
     "deep-link": {
       "desktop": {
         "schemes": [
