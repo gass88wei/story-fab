@@ -5,7 +5,7 @@
   "identifier": "com.story-fab.desktop",
   "build": {
     "beforeDevCommand": "npm run dev",
-    "beforeBuildCommand": "npm run build",
+    "beforeBuildCommand": "pnpm run build",
     "devUrl": "http://localhost:1430",
     "frontendDist": "../dist"
   },
@@ -95,9 +95,6 @@
   },
   "plugins": {
     "notification": {
-      "all": true
-    },
-    "global-shortcut": {
       "all": true
     },
     "clipboard-manager": {
